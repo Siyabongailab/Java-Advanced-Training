@@ -1,4 +1,4 @@
-package inheritance;
+package Chapter7.inheritance;
 
 public class ShapeRunner {
     public static void main(String[] args) {

@@ -1,15 +1,14 @@
 import Chapter9.Calculator;
-
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTest {
     Calculator objcalculator = new Calculator();
 
     @Test
     public void testSum() {
-        assertEquals(15, objcalculator.sum(10, 5));
+        assertEquals(15, objcalculator.sum(5, 5));
     }
 
     @Test
@@ -19,7 +18,7 @@ public class CalculatorTest {
 
     @Test
     public void testSubtract() {
-        assertEquals(5, objcalculator.subtract(10, 5));
+        assertEquals(5, objcalculator.subtract(9, 5));
     }
 
     @Test
@@ -27,8 +26,11 @@ public class CalculatorTest {
         assertEquals(2, objcalculator.divide(10, 5));
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void testDivideByZero() {
-        objcalculator.divide(10, 0);
+        Exception exception = assertThrows(ArithmeticException.class, ()-> {
+            objcalculator.divide(10, 0);
+        });
+
     }
 }
